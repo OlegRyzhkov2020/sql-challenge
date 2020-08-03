@@ -9,8 +9,6 @@ Data Science and Visualization Boot Camp (Northwestern University)
 ![GitHub watchers](https://img.shields.io/github/watchers/OlegRyzhkov2020/api-challenge?label=Watch&style=social)
 ![GitHub followers](https://img.shields.io/github/followers/OlegRyzhkov2020?label=Follow&style=social)
 
-![presentation_slide](images/slide_question.png)
-
 ## Case ERD
 
 ![presentation_slide](images/employees_erd.png)
@@ -29,11 +27,23 @@ CREATE TABLE employees(
 );
 ```
 
-## Data exploration
+## Data reading and exploration
 
+```python
+# Set up a connection to the postgres server.
+conn_string = "host="+ creds.PGHOST +" port="+ "5432" +" dbname="+ creds.PGDATABASE +" user=" + creds.PGUSER \
++" password="+ creds.PGPASSWORD
+conn=psycopg2.connect(conn_string)
+print(f"PostgreSQL Database {creds.PGDATABASE} is connected!")
+
+# Create a cursor object
+cursor = conn.cursor()
+```
+![presentation_slide](images/exploration.png)
 
 ## Data Visualization
 
+![presentation_slide](images/visualization.png)
 
 
 ## Contacts
