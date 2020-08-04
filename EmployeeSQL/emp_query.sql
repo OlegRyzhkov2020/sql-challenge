@@ -54,4 +54,3 @@ GROUP BY last_name ORDER BY frequency_count DESC LIMIT 20;
 SELECT e.first_name, e.last_name, e.hire_date
 FROM employees AS e
 WHERE e.emp_no = 499942;
-

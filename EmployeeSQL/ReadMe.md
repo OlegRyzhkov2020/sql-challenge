@@ -2,11 +2,11 @@
 
 Data Science and Visualization Boot Camp (Northwestern University)
 
-![GitHub last commit](https://img.shields.io/github/last-commit/OlegRyzhkov2020/api-challenge)
-![GitHub top language](https://img.shields.io/github/languages/top/OlegRyzhkov2020/api-challenge)
+![GitHub last commit](https://img.shields.io/github/last-commit/OlegRyzhkov2020/sql-challenge)
+![GitHub top language](https://img.shields.io/github/languages/top/OlegRyzhkov2020/sql-challenge)
 [![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg)](http://commonmark.org)
-[![HitCount](http://hits.dwyl.com/OlegRyzhkov2020/api-challenge.svg)](http://hits.dwyl.com/OlegRyzhkov2020/api-challenge)
-![GitHub watchers](https://img.shields.io/github/watchers/OlegRyzhkov2020/api-challenge?label=Watch&style=social)
+[![HitCount](http://hits.dwyl.com/OlegRyzhkov2020/sql-challenge.svg)](http://hits.dwyl.com/OlegRyzhkov2020/sql-challenge)
+![GitHub watchers](https://img.shields.io/github/watchers/OlegRyzhkov2020/sql-challenge?label=Watch&style=social)
 ![GitHub followers](https://img.shields.io/github/followers/OlegRyzhkov2020?label=Follow&style=social)
 
 ## Case ERD
@@ -27,10 +27,12 @@ CREATE TABLE employees(
 );
 ```
 
-## Data reading and exploration
+## Data reading
+
+* psycopg2
 
 ```python
-# Set up a connection to the postgres server.
+# Set up a connection to the postgres server
 conn_string = "host="+ creds.PGHOST +" port="+ "5432" +" dbname="+ creds.PGDATABASE +" user=" + creds.PGUSER \
 +" password="+ creds.PGPASSWORD
 conn=psycopg2.connect(conn_string)
@@ -39,11 +41,32 @@ print(f"PostgreSQL Database {creds.PGDATABASE} is connected!")
 # Create a cursor object
 cursor = conn.cursor()
 ```
+* sqlalchemy
+
+```python
+# Set up a connection to the postgres server
+DATABASE_URL = f"postgres://{creds.PGUSER}:{creds.PGPASSWORD}@{creds.PGHOST}:5432/{creds.PGDATABASE}"
+engine = sqlalchemy_package.create_engine(DATABASE_URL)
+connection = engine.connect()
+```
+
+## Data Exploration and Analysis
+
+* Analysis psycopg2
+
 ![presentation_slide](images/exploration.png)
+
+* Analysis sqlalchemy
+
+![presentation_slide](images/alchemy_analysis.png)
 
 ## Data Visualization
 
+![presentation_slide](images/salary_distribution.png)
+
 ![presentation_slide](images/visualization.png)
+
+![presentation_slide](images/gender_boxplot.png)
 
 
 ## Contacts
