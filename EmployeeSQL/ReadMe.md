@@ -27,7 +27,7 @@ CREATE TABLE employees(
 );
 ```
 
-## Data reading
+## Python Data Reading
 
 * psycopg2
 
