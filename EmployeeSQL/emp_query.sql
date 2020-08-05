@@ -1,8 +1,39 @@
---Data Analysis
+--####################################################################
+--Database Configuration Check 
+--####################################################################
 
---Schema Names List
-select schema_name
-from information_schema.schemata;
+--Schema and Table Names List
+SELECT schema_name
+FROM information_schema.schemata;
+SELECT table_name
+  FROM information_schema.tables
+ WHERE table_schema='public';
+
+--Find Table Names without Primary Key
+SELECT tab.table_schema,
+       tab.table_name
+FROM information_schema.tables tab
+LEFT JOIN information_schema.table_constraints tco 
+          ON tab.table_schema = tco.table_schema
+          AND tab.table_name = tco.table_name 
+          AND tco.constraint_type = 'PRIMARY KEY'
+WHERE tab.table_type = 'BASE TABLE'
+      AND tab.table_schema not in ('pg_catalog', 'information_schema')
+      AND tco.constraint_name is null
+ORDER BY table_schema,
+         table_name;
+
+--Adding Primary Key/Composite Key (if it does not exist)
+ALTER TABLE dept_employees
+ADD PRIMARY KEY (dept_no, emp_no);
+
+ALTER TABLE dept_managers
+ADD PRIMARY KEY (dept_no, emp_no);
+
+
+--####################################################################
+--Data Analysis
+--####################################################################
 
 --Employees Salary List
 SELECT e.emp_no, e.first_name, e.last_name, e.sex, s.salary
